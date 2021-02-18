@@ -19,3 +19,7 @@ soup = BeautifulSoup(res.text, features='html.parser')
 print(f'Hasil Pemanggilan {url}')
 print(f'Title: {soup.title.string}')
 print(f'content: {soup.contents}')
+
+with open('bs4_result.txt', 'w+') as file:
+    file.write(res.text)
+    file.close()
