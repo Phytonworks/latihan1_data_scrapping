@@ -1,6 +1,7 @@
 print('Hello World')
 
 import requests
+from bs4 import BeautifulSoup
 
 url = "https://seekingalpha.com/article/4406922-wesfarmers-limited-wfaff-ceo-rob-scott-on-half-year-2021-results-earnings-call-transcript"
 headers = {
@@ -12,3 +13,9 @@ print('status code {}'.format(res.status_code))
 with open('transcript_result.txt', 'w+') as file:
     file.write(res.text)
     file.close()
+
+print(f'content {res.text}')
+soup = BeautifulSoup(res.text, features='html.parser')
+print(f'Hasil Pemanggilan {url}')
+print(f'Title: {soup.title.string}')
+print(f'content: {soup.contents}')
